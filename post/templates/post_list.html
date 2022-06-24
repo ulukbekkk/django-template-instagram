@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+{% for p in post %}
+<div style="display: flex; justify-content: center">
+<div>
+
+    <div style="display: inline-flex;">
+    {% if p.user.image %}
+    <img src="{{ p.user.image.url }}" alt="" width="50" height="50" style="border-radius: 100px; border: 3px solid red">
+    {% else %}
+    <img src="{% static 'photoes/default_author.png' %}" alt="" style="border-radius: 100px; border: 3px solid red">
+    {% endif %}
+        <div style=" margin-left: 15px">
+        <h3>{{ p.user }} </h3>
+    </div>
+        </div>
+
+    <div style="display: flex; justify-content: center">
+  <div class="card">
+      <div class="col-md-10">
+    <img src="{{ p.images.url }}" class="card-img-top" alt="..." width="450" height="450">
+          </div>
+      <br>
+      <div style="display: inline-flex">
+    <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg></a>
+      <br>
+<svg style="margin-left: 10px" aria-label="Комментировать" class="_ab6-" color="#262626" fill="#262626" height="30" role="img" viewBox="0 0 24 24" width="30"><path d="M20.656 17.008a9.993 9.993 0 10-3.59 3.615L22 22z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
+    </div>
+      <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">{{ p.created_at }}</small></p>
+    </div>
+  </div>
+</div>
+    </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
